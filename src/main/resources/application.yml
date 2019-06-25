@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat: 
+    basedir: ~/
+    
+    
+spring:
+  profiles:
+    active: local
+  datasource: 
+    url: jdbc:h2:file:~/.h2/testdb
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema.sql   
+    data: classpath:db/data.sql
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      write-dates-as-timestamps: true   
+    
+mybatis:
+  #config-location: classpath:mybatis-config.xml
+  mapper-locations:
+  - classpath*:com/lankio/mappers/*.xml
+  type-aliases-package: com.lankio.domain
+
+logging:
+  level: 
+    root: WARN
+    com.lankio.mapper: DEBUG
+    
