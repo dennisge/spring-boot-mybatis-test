@@ -24,9 +24,14 @@ public class Results {
 		return new Result<>(200, null, data);
 	}
 
-	public static <T> Result<T> badRequest(int code, String msg) {
+	public static <T> Result<T> error(int code, String msg) {
 
 		return new Result<>(code, msg, null);
+	}
+
+	public static <T> Result<T> badRequest(String msg) {
+
+		return  error(ResultCode.BAD_REQUEST.getCode(), msg);
 	}
 
 }

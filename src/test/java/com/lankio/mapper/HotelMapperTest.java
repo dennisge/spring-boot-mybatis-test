@@ -4,6 +4,9 @@
 package com.lankio.mapper;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lankio.domain.Hotel;
+import com.lankio.domain.HotelCriteria;
 
 /**
  * 
@@ -48,6 +52,16 @@ public class HotelMapperTest {
 		int result = hotelMapper.updateHotelNameByCityId(cityName, 1);
 
 		assertEquals(1, result);
+	}
+
+	@Test
+	public void listHotel() {
+
+		HotelCriteria criteria = new HotelCriteria();
+		criteria.setCity(1);
+		List<Hotel> hotels = hotelMapper.listHotel(criteria);
+
+		assertNotNull(hotels);
 	}
 
 }

@@ -4,48 +4,46 @@
 package com.lankio.domain.common;
 
 /**
- * 
- *
  * //TODO comments
  *
- *
  * @author: DENNIS
- *
  **/
 public enum ResultCode {
 
-	OK(200, "OK"),
+    OK(200, "OK"),
 
-	BAD_REQUEST(400, "无效的请求"),
+    BAD_REQUEST(400, "Bad Request"),
 
-	NOT_FOUND(404, "接口不存在"),
+    NOT_FOUND(404, "Not Found"),
 
-	CONFLICT_DUPLICATE_KEY(405, "重复操作错误");
+    CONFLICT_DUPLICATE_KEY(405, "Duplicate Conflict"),
 
-	private int code;
+    PARAM_ERROR(444, "Parameter Error");
 
-	private String msg;
+    private int code;
 
-	ResultCode(int code, String msg) {
+    private String msg;
 
-		this.code = code;
-		this.msg = msg;
-	}
+    ResultCode(int code, String msg) {
 
-	public int getCode() {
-		return code;
-	}
+        this.code = code;
+        this.msg = msg;
+    }
 
-	public void setCode(int code) {
-		this.code = code;
-	}
+    public int getCode() {
+        return code;
+    }
 
-	public String getMsg() {
-		return msg;
-	}
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
 }

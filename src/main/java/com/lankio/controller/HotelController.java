@@ -1,9 +1,12 @@
 /*
  * Copyright © 2019 Weizhen. All rights reserved.
  */
-package com.lankio;
+package com.lankio.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lankio.domain.Hotel;
+import com.lankio.domain.HotelCriteria;
 import com.lankio.domain.common.Result;
 import com.lankio.domain.common.Results;
 import com.lankio.service.HotelService;
+import com.lankio.util.BeanUtils;
+import com.lankio.vo.HotelQuery;
 
 /**
  * 
@@ -38,8 +44,16 @@ public class HotelController {
 		return Results.ok(hotel);
 	}
 
+	@GetMapping("")
+	public Result<List<Hotel>> getHotelByCityId(@Validated HotelQuery query) {
+
+		List<Hotel> hotel = hotelService.listHotel(BeanUtils.copyProperties(query, HotelCriteria.class));
+
+		return Results.ok(hotel);
+	}
+
 	/**
-	 * Form update
+	 * Form updateÅ
 	 * 
 	 * @param hotel
 	 * @return
